@@ -10,6 +10,7 @@
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
+  padding: 0 19px;
   visibility: none;
   opacity: 0;
   pointer-events: none;
@@ -106,4 +107,38 @@
 .modal__save-button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+@media screen and (max-width: 620px) {
+  .modal__close-button {
+    margin-bottom: 13px;
+    margin-left: -35px;
+    padding: 0;
+    width: 26px;
+    height: 26px;
+  }
+  .modal__container {
+    height: 322px;
+    width: 282px;
+  }
+
+  .modal__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 25px 22px 43px;
+    margin: 0;
+  }
+  .modal__form {
+    max-width: 238px;
+  }
+
+  .modal__input {
+    margin: 0 22px 13px;
+    width: 100%;
+  }
+  .modal__save-button {
+    height: 46px;
+    width: 238px;
+    margin: 45px 22px 25px;
+  }
 }
