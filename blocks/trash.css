@@ -1,0 +1,12 @@
+.trash {
+  position: absolute;
+  padding: 0px;
+  margin: 18px 15px 244px 250px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.trash__button:hover {
+  opacity: 60%;
+}
