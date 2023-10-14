@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="autor" content="Josiah Wolff" />
     <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="icon" href="./favicon.svg" />
     <title>Around the us</title>
   </head>
   <body class="page">
@@ -135,14 +136,9 @@
           <button
             class="modal__close-button modal__close-button_preview"
             type="button"
-            id="modal-close-button"
+            id="card-preview-close-button"
           ></button>
-          <img
-            class="modal__preview-image"
-            alt="image"
-            id="modal-preview-image"
-            src="#"
-          />
+          <img class="modal__preview-image" id="modal-preview-image" />
           <p class="modal__caption" id="modal-caption"></p>
         </div>
       </div>
@@ -171,6 +167,6 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" defer></script>
   </body>
 </html>

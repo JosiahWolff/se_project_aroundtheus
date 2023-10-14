@@ -49,7 +49,7 @@ const cardImage = document.querySelector("#modal-preview-image");
 const cardCaption = document.querySelector("#modal-caption");
 const cardPreviewModal = document.querySelector("#cardPreviewModal");
 const cardPreviewCloseButton = cardPreviewModal.querySelector(
-  "#modal-close-button"
+  "#card-preview-close-button"
 );
 
 /* Functions */
@@ -82,6 +82,7 @@ function getCardElement(cardData) {
   }
 
   cardImage.addEventListener("click", () => handlePreviewImage(cardData));
+
   cardPreviewCloseButton.addEventListener("click", () =>
     closeModal(cardPreviewModal)
   );
@@ -115,6 +116,7 @@ function handleAddCardSubmit(evt) {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard((name, link), cardWrap);
+  evt.target.reset();
   closeModal(addCardModal);
 }
 
