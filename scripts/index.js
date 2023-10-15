@@ -76,7 +76,7 @@ function getCardElement(cardData) {
 
   function handlePreviewImage(cardData) {
     cardPreviewImage.src = cardData.link;
-    cardImage.alt = cardData.name;
+    cardPreviewsImage.alt = cardData.name;
     cardCaption.textContent = cardData.name;
     openModal(cardPreviewModal);
   }
@@ -114,7 +114,7 @@ function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  renderCard((name, link), cardWrap);
+  renderCard({ name, link }, cardWrap);
   evt.target.reset();
   closeModal(addCardModal);
 }
