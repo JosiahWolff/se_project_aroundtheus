@@ -45,7 +45,7 @@ const addNewCardButton = document.querySelector("#profile__button");
 const cardTitleInput = addCardFormElement.querySelector("#card-title-input");
 const cardUrlInput = addCardFormElement.querySelector("#card-url-input");
 
-const cardImage = document.querySelector("#modal-preview-image");
+const cardPreviewImage = document.querySelector("#modal-preview-image");
 const cardCaption = document.querySelector("#modal-caption");
 const cardPreviewModal = document.querySelector("#cardPreviewModal");
 const cardPreviewCloseButton = cardPreviewModal.querySelector(
@@ -75,17 +75,13 @@ function getCardElement(cardData) {
   const deleteButton = cardElement.querySelector("#trash-image");
 
   function handlePreviewImage(cardData) {
-    cardImage.src = cardData.link;
+    cardPreviewImage.src = cardData.link;
     cardImage.alt = cardData.name;
     cardCaption.textContent = cardData.name;
     openModal(cardPreviewModal);
   }
 
   cardImage.addEventListener("click", () => handlePreviewImage(cardData));
-
-  cardPreviewCloseButton.addEventListener("click", () =>
-    closeModal(cardPreviewModal)
-  );
 
   deleteButton.addEventListener("click", () => {
     cardElement.remove();
@@ -98,9 +94,12 @@ function getCardElement(cardData) {
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
   cardTitle.textContent = cardData.name;
-  cardImage.textContent = cardData.link;
   return cardElement;
 }
+
+cardPreviewCloseButton.addEventListener("click", () =>
+  closeModal(cardPreviewModal)
+);
 
 /* Event Handlers */
 
