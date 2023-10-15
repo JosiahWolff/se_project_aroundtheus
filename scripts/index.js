@@ -76,7 +76,7 @@ function getCardElement(cardData) {
 
   function handlePreviewImage(cardData) {
     cardPreviewImage.src = cardData.link;
-    cardPreviewsImage.alt = cardData.name;
+    cardPreviewImage.alt = cardData.name;
     cardCaption.textContent = cardData.name;
     openModal(cardPreviewModal);
   }
