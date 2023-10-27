@@ -121,6 +121,11 @@
   border-radius: 2px;
 }
 
+.modal__save-button:hover:not(:disabled) {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .modal__save-button_disabled {
   background-color: white;
   color: black;
@@ -128,9 +133,9 @@
   opacity: 0.5;
 }
 
-.modal__save-button:hover {
-  opacity: 0.8;
-  cursor: pointer;
+.modal__save-button_disabled:hover {
+  opacity: 0.2;
+  cursor: default;
 }
 
 .modal__wrapper {

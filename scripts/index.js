@@ -27,6 +27,7 @@ const initialCards = [
 
 /* Elements */
 
+//const modal = document.querySelector(".modal");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
@@ -132,6 +133,21 @@ profileEditCloseButton.addEventListener("click", () =>
 );
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeModal(modal);
+  }
+});
+
+document.addEventListener("click", (e) => {
+  if (modal.classList.contains("modal_opened") && !modal.contains(e.target)) {
+    closeModal(modal);
+  }
+});
+
+document.removeEventListener("keydown", closeModal);
+document.removeEventListener("click", closeModal);
 
 /* add new card button */
 
