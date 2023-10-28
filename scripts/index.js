@@ -57,11 +57,47 @@ const cardPreviewCloseButton = cardPreviewModal.querySelector(
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalByEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalByEscape);
 }
+
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileSubtitleInput.value = profileSubtitle.textContent;
+  openModal(profileEditModal);
+});
+
+profileEditCloseButton.addEventListener("click", () =>
+  closeModal(profileEditModal)
+);
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+addCardFormElement.addEventListener("submit", handleAddCardSubmit);
+
+addNewCardButton.addEventListener("click", () => openModal(addCardModal));
+addCardModalCloseButton.addEventListener("click", () =>
+  closeModal(addCardModal)
+);
+
+function closeModalByEscape(event) {
+  if (event.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+
+    closeModal(openedModal);
+  }
+}
+
+function closeModalByClickOutside(event) {
+  const openedModal = document.querySelector(".modal_opened");
+  if (openedModal.contains(event.target)) {
+    closeModal(openedModal);
+  }
+}
+
+document.addEventListener("click", closeModalByClickOutside);
 
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
@@ -121,39 +157,5 @@ function handleAddCardSubmit(evt) {
 }
 
 /* Event Listeners */
-
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileSubtitleInput.value = profileSubtitle.textContent;
-  openModal(profileEditModal);
-});
-
-profileEditCloseButton.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-addCardFormElement.addEventListener("submit", handleAddCardSubmit);
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeModal(modal);
-  }
-});
-
-document.addEventListener("click", (e) => {
-  if (modal.classList.contains("modal_opened") && !modal.contains(e.target)) {
-    closeModal(modal);
-  }
-});
-
-document.removeEventListener("keydown", closeModal);
-document.removeEventListener("click", closeModal);
-
-/* add new card button */
-
-addNewCardButton.addEventListener("click", () => openModal(addCardModal));
-addCardModalCloseButton.addEventListener("click", () =>
-  closeModal(addCardModal)
-);
 
 initialCards.forEach((cardData) => renderCard(cardData, cardWrap));
