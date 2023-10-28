@@ -98,7 +98,8 @@ function closeModalOnRemoteClick(evt) {
     evt.target.classList.contains("modal__close") ||
     evt.target.classList.contains("modal__wrapper")
   ) {
-    closeModal(evt.target);
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
   }
 }
 
