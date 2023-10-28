@@ -63,6 +63,7 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  cardPreviewModal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalByEscape);
   modal.removeEventListener("mousedown", closeModalOnRemoteClick);
 }
@@ -106,19 +107,21 @@ function renderCard(cardData, wrapper) {
   wrapper.prepend(cardElement);
 }
 
+function handlePreviewImage(cardData) {
+  cardPreviewImage.src = cardData.link;
+  cardPreviewImage.alt = cardData.name;
+  cardCaption.textContent = cardData.name;
+  openModal(cardPreviewModal);
+
+  //cardPreviewModal.addEventListener("mousedown", closeModalOnRemoteClick);
+}
+
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector("#card-image");
   const cardTitle = cardElement.querySelector("#card-title");
   const likeButton = cardElement.querySelector("#heart-image");
   const deleteButton = cardElement.querySelector("#trash-image");
-
-  function handlePreviewImage(cardData) {
-    cardPreviewImage.src = cardData.link;
-    cardPreviewImage.alt = cardData.name;
-    cardCaption.textContent = cardData.name;
-    openModal(cardPreviewModal);
-  }
 
   cardImage.addEventListener("click", () => handlePreviewImage(cardData));
 
