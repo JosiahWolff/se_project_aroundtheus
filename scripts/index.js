@@ -58,11 +58,13 @@ const cardPreviewCloseButton = cardPreviewModal.querySelector(
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalByEscape);
+  modal.addEventListener("mousedown", closeModalOnRemoteClick);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalByEscape);
+  modal.removeEventListener("mousedown", closeModalOnRemoteClick);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -90,14 +92,14 @@ function closeModalByEscape(event) {
   }
 }
 
-function closeModalByClickOutside(event) {
-  const openedModal = document.querySelector(".modal_opened");
-  if (openedModal.contains(event.target)) {
-    closeModal(openedModal);
+function closeModalOnRemoteClick(evt) {
+  if (
+    evt.target === evt.currentTarget ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closeModal(evt.target);
   }
 }
-
-document.addEventListener("click", closeModalByClickOutside);
 
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
