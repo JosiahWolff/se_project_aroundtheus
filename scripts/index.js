@@ -63,7 +63,6 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  cardPreviewModal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalByEscape);
   modal.removeEventListener("mousedown", closeModalOnRemoteClick);
 }
