@@ -96,7 +96,8 @@ function closeModalByEscape(event) {
 function closeModalOnRemoteClick(evt) {
   if (
     evt.target === evt.currentTarget ||
-    evt.target.classList.contains("modal__close")
+    evt.target.classList.contains("modal__close") ||
+    evt.target.classList.contains("modal__wrapper")
   ) {
     closeModal(evt.target);
   }
@@ -112,8 +113,6 @@ function handlePreviewImage(cardData) {
   cardPreviewImage.alt = cardData.name;
   cardCaption.textContent = cardData.name;
   openModal(cardPreviewModal);
-
-  //cardPreviewModal.addEventListener("mousedown", closeModalOnRemoteClick);
 }
 
 function getCardElement(cardData) {
