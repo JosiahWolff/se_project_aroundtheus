@@ -1,3 +1,6 @@
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -25,9 +28,15 @@ const initialCards = [
   },
 ];
 
-/* Elements */
+const cardData = {
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+};
 
-//const modal = document.querySelector(".modal");
+const card = new Card(cardData, "#card-template");
+card.getView();
+
+/* Elements */
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
@@ -124,9 +133,9 @@ function getCardElement(cardData) {
 
   cardImage.addEventListener("click", () => handlePreviewImage(cardData));
 
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  //deleteButton.addEventListener("click", () => {
+  //cardElement.remove();
+  //});
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("heart_active");
