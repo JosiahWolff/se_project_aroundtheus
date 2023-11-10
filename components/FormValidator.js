@@ -9,15 +9,15 @@ export default class FormValidator {
     this._form = formElement;
   }
 
-  _showInputError(inputEl, errorMessageEl) {
-    errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
+  _showInputError(inputEl) {
+    const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.add(this._inputErrorClass);
     errorMessageEl.textContent = inputEl.validationMessage;
     errorMessageEl.classList.add(this._errorClass);
   }
 
   _hideInputError(inputEl) {
-    errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
+    const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.remove(this._inputErrorClass);
     errorMessageEl.textContent = "";
     errorMessageEl.classList.remove(this._errorClass);
@@ -72,5 +72,4 @@ const settings = {
   errorClass: "modal__error_visible",
 };
 
-const editFormValidator = new FormValidator(settings);
 editFormValidator.enableValidation();

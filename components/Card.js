@@ -3,6 +3,7 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
+    this._element = this._getElement;
   }
 
   _setEventListeners() {
@@ -25,10 +26,26 @@ export default class Card {
     this._cardElement = null;
   }
 
-  _handleLikeIcon() {
+  _handleLikeIcon = () => {
     this._cardElement
       .querySelector("#heart-image")
       .classList.toggle("heart_active");
+  };
+
+  _getElement() {
+    const template = document.querySelector("#card-template");
+    const element = template.content.cloneNode(true);
+
+    return element;
+  }
+
+  updateContents(data) {
+    const cardTitle = this._cardElement.querySelector(".card__title");
+    const cardDescription =
+      this._cardElement.querySelector(".card__description");
+
+    cardTitle.textContent = data.title;
+    cardDescription.textContent = data.description;
   }
 
   getView() {

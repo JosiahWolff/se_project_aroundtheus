@@ -1,6 +1,9 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 
+const editFormValidator = new FormValidator(settings, editFormSettings);
+editFormValidator.enableValidation();
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -32,9 +35,6 @@ const cardData = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
-
-const card = new Card(cardData, "#card-template");
-card.getView();
 
 /* Elements */
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -68,6 +68,8 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalByEscape);
   modal.addEventListener("mousedown", closeModalOnRemoteClick);
+
+  formValidator.enableValidation();
 }
 
 function closeModal(modal) {
@@ -125,6 +127,9 @@ function handlePreviewImage(cardData) {
 }
 
 function getCardElement(cardData) {
+  const card = new Card(cardData, "#card-template");
+  card.getView();
+
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector("#card-image");
   const cardTitle = cardElement.querySelector("#card-title");
@@ -168,6 +173,37 @@ function handleAddCardSubmit(evt) {
   evt.target.reset();
   closeModal(addCardModal);
 }
+
+const profileEditFormValidator = new FormValidator(
+  {
+    formSelector: "#modal-form",
+    inputSelector: ".modal__input",
+    submitButtonSelector: ".modal__save-button",
+    inactiveButtonClass: "modal__save-button_disabled",
+    inputErrorClass: "modal__input_type_error",
+    errorClass: "modal__error_visible",
+  },
+  profileEditForm
+);
+
+profileEditFormValidator.enableValidation();
+
+const addCardFormValidator = new FormValidator(
+  {
+    formSelector: "#add-card-form",
+    inputSelector: ".modal__input",
+    submitButtonSelector: ".modal__save-button",
+    inactiveButtonClass: "modal__save-button_disabled",
+    inputErrorClass: "modal__input_type_error",
+    errorClass: "modal__error_visible",
+  },
+  addCardFormElement
+);
+
+addCardFormValidator.enableValidation();
+
+profileEditFormValidator.toggleButtonState();
+addCardFormValidator.toggleButtonState();
 
 /* Event Listeners */
 
