@@ -3,12 +3,11 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
-    this._element = this._getElement;
   }
 
   _setEventListeners() {
     //"#heart-image"
-    const likeButton = this._cardElement
+    likeButton = this._cardElement
       .querySelector("#heart-image")
       .addEventListener("click", () => {
         this._handleLikeIcon();
@@ -42,11 +41,6 @@ export default class Card {
       .content.querySelector(".cards__card")
 
       .cloneNode(true);
-
-    const template = document.querySelector("#card-template");
-    const element = template.content.cloneNode(true);
-
-    return element;
   }
 
   updateContents(data) {
@@ -60,9 +54,6 @@ export default class Card {
 
   getView() {
     this._cardElement = this._getElement()
-      .querySelector(this._cardSelector)
-      .content.querySelector(".cards__card")
-      .cloneNode(true);
     const card = new Card(cardData, "#card-template");
 
     this._setEventListeners();
