@@ -67,6 +67,9 @@ const cardPreviewCloseButton = cardPreviewModal.querySelector(
 
 /* Functions */
 
+profileEditFormValidator.toggleButtonState();
+addCardFormValidator.toggleButtonState();
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalByEscape);
@@ -78,9 +81,6 @@ function closeModal(modal) {
   document.removeEventListener("keydown", closeModalByEscape);
   modal.removeEventListener("mousedown", closeModalOnRemoteClick);
 }
-
-profileEditFormValidator.toggleButtonState();
-addCardFormValidator.toggleButtonState();
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
