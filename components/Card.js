@@ -43,15 +43,6 @@ export default class Card {
       .cloneNode(true);
   }
 
-  updateContents(data) {
-    const cardTitle = this._cardElement.querySelector(".card__title");
-    const cardDescription =
-      this._cardElement.querySelector(".card__description");
-
-    cardTitle.textContent = data.title;
-    cardDescription.textContent = data.description;
-  }
-
   getView() {
     this._cardElement = this._getElement()
     const card = new Card(cardData, "#card-template");
