@@ -1,8 +1,11 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 
-const editFormValidator = new FormValidator(settings, editFormSettings);
+const editFormValidator = new FormValidator(settings, formEl);
 editFormValidator.enableValidation();
+
+const editCard = new Card(settings, formEl);
+editCard.enableValidation();
 
 const initialCards = [
   {
@@ -68,8 +71,6 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalByEscape);
   modal.addEventListener("mousedown", closeModalOnRemoteClick);
-
-  formValidator.enableValidation();
 }
 
 function closeModal(modal) {
@@ -77,6 +78,9 @@ function closeModal(modal) {
   document.removeEventListener("keydown", closeModalByEscape);
   modal.removeEventListener("mousedown", closeModalOnRemoteClick);
 }
+
+profileEditFormValidator.toggleButtonState();
+addCardFormValidator.toggleButtonState();
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
@@ -128,28 +132,7 @@ function handlePreviewImage(cardData) {
 
 function getCardElement(cardData) {
   const card = new Card(cardData, "#card-template");
-  card.getView();
-
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector("#card-image");
-  const cardTitle = cardElement.querySelector("#card-title");
-  const likeButton = cardElement.querySelector("#heart-image");
-  const deleteButton = cardElement.querySelector("#trash-image");
-
-  cardImage.addEventListener("click", () => handlePreviewImage(cardData));
-
-  //deleteButton.addEventListener("click", () => {
-  //cardElement.remove();
-  //});
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("heart_active");
-  });
-
-  cardImage.src = cardData.link;
-  cardImage.alt = cardData.name;
-  cardTitle.textContent = cardData.name;
-  return cardElement;
+  return card.getView();
 }
 
 cardPreviewCloseButton.addEventListener("click", () =>
@@ -201,9 +184,6 @@ const addCardFormValidator = new FormValidator(
 );
 
 addCardFormValidator.enableValidation();
-
-profileEditFormValidator.toggleButtonState();
-addCardFormValidator.toggleButtonState();
 
 /* Event Listeners */
 

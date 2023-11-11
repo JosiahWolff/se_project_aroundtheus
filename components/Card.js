@@ -19,6 +19,9 @@ export default class Card {
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
+    const cardPreviewCloseButton = this._cardElement
+      .querySelector("#card-preview-close-button")
+      .addEventListener("click", () => closeModal(cardPreviewModal));
   }
 
   _handleDeleteCard() {
@@ -33,6 +36,13 @@ export default class Card {
   };
 
   _getElement() {
+    return document
+      .querySelector(this._cardSelector)
+
+      .content.querySelector(".cards__card")
+
+      .cloneNode(true);
+
     const template = document.querySelector("#card-template");
     const element = template.content.cloneNode(true);
 
@@ -49,11 +59,13 @@ export default class Card {
   }
 
   getView() {
-    this._cardElement = document
+    this._cardElement = this._getElement()
       .querySelector(this._cardSelector)
       .content.querySelector(".cards__card")
       .cloneNode(true);
+    const card = new Card(cardData, "#card-template");
 
     this._setEventListeners();
+    return this._getElement;
   }
 }
