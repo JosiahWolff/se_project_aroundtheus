@@ -19,9 +19,9 @@ export default class Card {
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
-    const cardPreviewCloseButton = this._cardElement
-      .querySelector("#card-preview-close-button")
-      .addEventListener("click", () => closeModal(cardPreviewModal));
+    const handlePreviewImage = this._cardElement
+      .querySelector("#cardPreviewModal")
+      .addEventListener("click", () => open(cardPreviewModal));
   }
 
   _handleDeleteCard() {
@@ -63,9 +63,11 @@ export default class Card {
       .querySelector(this._cardSelector)
       .content.querySelector(".cards__card")
       .cloneNode(true);
-    const card = new Card(cardData, "#card-template");
+    cardPreviewImage.src = cardData.link;
+    cardPreviewImage.alt = cardData.name;
+    cardCaption.textContent = cardData.name;
 
     this._setEventListeners();
-    return this._getElement;
+    return this._cardElement;
   }
 }
