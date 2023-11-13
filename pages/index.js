@@ -1,13 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 
-const editFormValidator = new FormValidator(settings, formEl);
-editFormValidator.enableValidation();
-
-const editCard = new Card(settings, formEl);
-
-editCard.enableValidation();
-
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -34,13 +27,6 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
-
-const card = new Card(cardData, "#card-template");
 
 /* Elements */
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -69,9 +55,6 @@ const cardPreviewCloseButton = cardPreviewModal.querySelector(
 );
 
 /* Functions */
-
-profileEditFormValidator.toggleButtonState();
-addCardFormValidator.toggleButtonState();
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -160,33 +143,13 @@ function handleAddCardSubmit(evt) {
   closeModal(addCardModal);
 }
 
-const profileEditFormValidator = new FormValidator(
-  {
-    formSelector: "#modal-form",
-    inputSelector: ".modal__input",
-    submitButtonSelector: ".modal__save-button",
-    inactiveButtonClass: "modal__save-button_disabled",
-    inputErrorClass: "modal__input_type_error",
-    errorClass: "modal__error_visible",
-  },
-  profileEditForm
-);
-
+const profileEditFormValidator = new FormValidator(settings, profileEditForm);
 profileEditFormValidator.enableValidation();
+profileEditFormValidator.toggleButtonState();
 
-const addCardFormValidator = new FormValidator(
-  {
-    formSelector: "#add-card-form",
-    inputSelector: ".modal__input",
-    submitButtonSelector: ".modal__save-button",
-    inactiveButtonClass: "modal__save-button_disabled",
-    inputErrorClass: "modal__input_type_error",
-    errorClass: "modal__error_visible",
-  },
-  addCardFormElement
-);
-
+const addCardFormValidator = new FormValidator(settings, addCardFormElement);
 addCardFormValidator.enableValidation();
+addCardFormValidator.toggleButtonState();
 
 /* Event Listeners */
 
