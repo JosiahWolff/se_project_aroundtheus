@@ -118,7 +118,7 @@ function handlePreviewImage(cardData) {
 
 function getCardElement(cardData) {
   const card = new Card(cardData, "#card-template");
-  return card.getView();
+  return card.getCardElement();
 }
 
 cardPreviewCloseButton.addEventListener("click", () =>

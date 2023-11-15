@@ -1,5 +1,72 @@
 export default class Card {
-  constructor(cardData, cardSelector) {
+  constructor(
+    data,
+    cardSelector,
+    handleImagePreview,
+    handleLikeButton,
+    handleDeleteButton
+  ) {
+    this._link = data.link;
+    this._name = data.name;
+    // --
+    this._cardTemplate = document
+      .querySelector(cardSelector)
+      .content.querySelector("#card-template");
+    // --
+    this._handleImagePreview = handleImagePreview;
+    this._handleLikeButton = handleLikeButton;
+    this._handleDeleteButton = handleDeleteButton;
+    // --
+    this._element;
+    this._previewImage;
+  }
+
+  createCardElement() {
+    this._element = this.getCardElement();
+    this._setTextAndImage();
+    this._setEventListeners();
+    return this._element;
+  }
+
+  _setTextAndImage() {
+    this._deleteButton = this._element.querySelector("#trash-image");
+    this._likeButton = this._element.querySelector("#heart-image");
+    this._previewImage = this._element.querySelector("#modal-preview-image");
+    this._previewImage.src = this._link;
+    this._previewImage.alt = this._name;
+    this._element.querySelector(".modal__title").textContent = this._name;
+  }
+
+  getCardElement() {
+    return this._cardTemplate;
+  }
+
+  _setEventListeners() {
+    this._likeButton.addEventListener("click", () => this._handleLikeButton());
+    this._deleteButton.addEventListener("click", () =>
+      this._handleDeleteButton()
+    );
+    this._previewImage.addEventListener("click", () =>
+      this._handleImagePreview()
+    );
+  }
+
+  handleDelete() {
+    this._element.remove();
+  }
+
+  _handleLike() {
+    if (this.isLiked()) {
+      this._likeButton.classList.add("heart_active");
+    } else {
+      this._likeButton.classList.remove("heart_active");
+    }
+  }
+}
+
+/*
+export default class Card {
+  constructor({ link, name }, cardData, cardSelector) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._cardSelector = cardSelector;
@@ -70,3 +137,4 @@ const cardData = {
 };
 
 const card = new Card(cardData, "#card-template");
+*/
