@@ -143,6 +143,14 @@ function handleAddCardSubmit(evt) {
   closeModal(addCardModal);
 }
 
+const settings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__save-button",
+  inactiveButtonClass: "modal__save-button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
 const profileEditFormValidator = new FormValidator(settings, profileEditForm);
 profileEditFormValidator.enableValidation();
 profileEditFormValidator.toggleButtonState();

@@ -1,10 +1,11 @@
 export default class Card {
-  constructor({ name, link }, cardSelector) {
-    this._name = name;
-    this._link = link;
+  constructor(cardData, cardSelector) {
+    this._name = cardData.name;
+    this._link = cardData.link;
     this._cardSelector = cardSelector;
-    this._cardElement = this._getElement();
+    this._cardElement = this.createCardElement();
     this._handlePreviewImage = this._handlePreviewImage.bind(this);
+    this._setEventListeners();
   }
 
   _setEventListeners() {
@@ -12,9 +13,7 @@ export default class Card {
     addEventListener("click", () => {
       this._handleLikeIcon();
     });
-
     //"#trash-image"
-
     this._cardElement
 
       .querySelector("#trash-image")
@@ -22,6 +21,21 @@ export default class Card {
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
+    //preview image
+    const cardImage = this._cardElement.querySelector("#card-image");
+    cardImage.addEventListener("click", () => {
+      this._handlePreviewImage(this);
+    });
+  }
+
+  createCardElement() {
+    this._cardElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".cards__card")
+      .cloneNode(true);
+
+    this._setEventListeners();
+    return this._cardElement;
   }
 
   _handlePreviewImage() {
@@ -45,30 +59,14 @@ export default class Card {
       .classList.toggle("heart_active");
   };
 
-  _getElement() {
-    this._cardElement = document
-      .querySelector(this._cardSelector)
-      .content.querySelector(".cards__card")
-      .cloneNode(true);
-
-    this._setEventListeners();
-    return this._cardElement;
-  }
-
-  _setEventListeners() {
-    const cardImage = this._cardElement.querySelector("#card-image");
-    cardImage.addEventListener("click", this._handlePreviewImage);
-    // Add other event listeners as needed
-  }
-
   getView() {
     return this._cardElement;
   }
-
-  cardData = {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  };
-
-  card = new Card(cardData, "#card-template");
 }
+
+const cardData = {
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+};
+
+const card = new Card(cardData, "#card-template");

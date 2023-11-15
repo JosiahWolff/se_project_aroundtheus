@@ -1,12 +1,16 @@
 export default class FormValidator {
-  constructor(settings, formElement) {
+  constructor(settings, formEl) {
     this._inputSelector = settings.inputSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
 
-    this._form = formElement;
+    this._form = formEl;
+    this._inputEls = [...this._form.querySelectorAll(this._inputSelector)];
+    this._submitButton = this._form.querySelector(this._submitButtonSelector);
+
+    this._setEventListeners();
   }
 
   _showInputError(inputEl) {
@@ -34,7 +38,7 @@ export default class FormValidator {
     return !this._inputEls.every((inputEl) => inputEl.validity.valid);
   }
 
-  _toggleButtonState() {
+  toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._submitButton.classList.add(this._inactiveButtonClass);
       this._submitButton.disabled = true;
@@ -63,11 +67,3 @@ export default class FormValidator {
     this._setEventListeners();
   }
 }
-
-const settings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__save-button",
-  inactiveButtonClass: "modal__save-button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
