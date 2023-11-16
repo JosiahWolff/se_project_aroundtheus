@@ -1,12 +1,12 @@
 export default class FormValidator {
-  constructor(settings, formEl) {
-    this._inputSelector = settings.inputSelector;
-    this._submitButtonSelector = settings.submitButtonSelector;
-    this._inactiveButtonClass = settings.inactiveButtonClass;
-    this._inputErrorClass = settings.inputErrorClass;
-    this._errorClass = settings.errorClass;
+  constructor(config, formSelector) {
+    this._inputSelector = config.inputSelector;
+    this._submitButtonSelector = config.submitButtonSelector;
+    this._inactiveButtonClass = config.inactiveButtonClass;
+    this._inputErrorClass = config.inputErrorClass;
+    this._errorClass = config.errorClass;
 
-    this._form = formEl;
+    this._formEl = document.querySelector(formSelector);
     this._inputEls = [...this._form.querySelectorAll(this._inputSelector)];
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
 
@@ -30,15 +30,18 @@ export default class FormValidator {
   _checkInputValidity(inputEl) {
     if (!inputEl.validity.valid) {
       return this._showInputError(inputEl);
+    } else {
+      this._hideInputError(inputEl);
     }
-    this._hideInputError(inputEl);
   }
 
   _hasInvalidInput() {
-    return !this._inputEls.every((inputEl) => inputEl.validity.valid);
+    return !this._inputEls.every((inputEl) => {
+      return inputEl.validity.valid;
+    });
   }
 
-  toggleButtonState() {
+  _toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._submitButton.classList.add(this._inactiveButtonClass);
       this._submitButton.disabled = true;
@@ -49,15 +52,19 @@ export default class FormValidator {
   }
 
   _setEventListeners() {
-    this._inputEls = [...this._form.querySelectorAll(this._inputSelector)];
-    this._submitButton = this._form.querySelector(this._submitButtonSelector);
-
     this._inputEls.forEach((inputEl) => {
-      inputEl.addEventListener("input", () => {
+      inputEl.addEventListener("input", (evt) => {
         this._checkInputValidity(inputEl);
         this.toggleButtonState();
       });
     });
+  }
+
+  resetValidation() {
+    this._inputEls.forEach((inputEl) => {
+      this._hideInputError(inputEl);
+    });
+    this._toggleButtonState();
   }
 
   enableValidation() {
