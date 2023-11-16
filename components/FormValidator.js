@@ -11,6 +11,8 @@ export default class FormValidator {
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
   }
 
+  //private
+
   _showInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.add(this._inputErrorClass);
@@ -57,6 +59,8 @@ export default class FormValidator {
       });
     });
   }
+
+  //public
 
   resetValidation() {
     this._inputEls.forEach((inputEl) => {

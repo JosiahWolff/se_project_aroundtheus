@@ -7,6 +7,8 @@ export default class Card {
     this._cardSelector = cardSelector;
   }
 
+  //private
+
   _setEventListeners() {
     //like-button
 
@@ -33,6 +35,8 @@ export default class Card {
     this._cardElement.remove();
     this._cardElement = null;
   }
+
+  //public
 
   getCardElement() {
     this._cardElement = document
