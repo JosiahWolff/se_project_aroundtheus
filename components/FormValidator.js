@@ -1,16 +1,14 @@
 export default class FormValidator {
-  constructor(config, formSelector) {
+  constructor(config, form) {
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
 
-    this._formEl = document.querySelector(formSelector);
+    this._form = form;
     this._inputEls = [...this._form.querySelectorAll(this._inputSelector)];
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
-
-    this._setEventListeners();
   }
 
   _showInputError(inputEl) {
@@ -29,7 +27,7 @@ export default class FormValidator {
 
   _checkInputValidity(inputEl) {
     if (!inputEl.validity.valid) {
-      return this._showInputError(inputEl);
+      this._showInputError(inputEl);
     } else {
       this._hideInputError(inputEl);
     }
@@ -55,7 +53,7 @@ export default class FormValidator {
     this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", (evt) => {
         this._checkInputValidity(inputEl);
-        this.toggleButtonState();
+        this._toggleButtonState();
       });
     });
   }

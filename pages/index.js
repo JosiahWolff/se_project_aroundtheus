@@ -71,7 +71,7 @@ function closeModal(modal) {
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileSubtitleInput.value = profileSubtitle.textContent;
-  editProfileValidator.resetValidation();
+  profileEditFormValidator.resetValidation();
   openModal(profileEditModal);
 });
 
@@ -121,16 +121,16 @@ function handleAddCardSubmit(e) {
   e.preventDefault();
   //
   const cardData = {
-    name: addCardTitleInput.value,
-    link: addCardUrlInput.value,
+    name: cardTitleInput.value,
+    link: cardUrlInput.value,
   };
   //renderCard({ name, link }, cardListEl);
   const cardElement = createCard(cardData);
-  cardListEl.prepend(cardElement);
+  cardWrap.prepend(cardElement);
 
   closeModal(addCardModal);
-  addCardForm.reset();
-  addCardValidator.resetValidation();
+  e.target.reset();
+  addCardFormValidator.resetValidation();
 }
 
 cardPreviewCloseButton.addEventListener("click", () =>
@@ -163,7 +163,7 @@ const addCardFormValidator = new FormValidator(
 
 initialCards.forEach((cardData) => {
   const cardElement = createCard(cardData);
-  cardListEl.append(cardElement);
+  cardWrap.append(cardElement);
 });
 profileEditFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
