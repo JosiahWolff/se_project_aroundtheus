@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="autor" content="Josiah Wolff" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" href="./favicon.svg" />
     <title>Around the us</title>
   </head>
@@ -14,7 +13,7 @@
       <header class="header">
         <img
           class="header__logo"
-          src="./images/Vector.svg"
+          src="<%=require('./images/Vector.svg')%>"
           alt="around-the-us-logo"
         />
       </header>
@@ -22,7 +21,7 @@
         <section class="profile">
           <img
             class="profile__image"
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg')%>"
             alt="photo-of-the-user"
           />
           <div class="profile__description">
@@ -186,6 +185,5 @@
         </div>
       </li>
     </template>
-    <script src="./pages/index.js" type="module" defer></script>
   </body>
 </html>
