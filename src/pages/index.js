@@ -25,10 +25,10 @@ import {
   cardCaption,
   cardPreviewModal,
   profileEditButton,
-  profileEditCloseButton,
+  //profileEditCloseButton,
   addNewCardButton,
-  addCardModalCloseButton,
-  cardPreviewCloseButton,
+  //addCardModalCloseButton,
+  //cardPreviewCloseButton,
 } from "../utils/constant.js";
 
 // Variables
