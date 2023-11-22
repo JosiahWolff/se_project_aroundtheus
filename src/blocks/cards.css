@@ -41,6 +41,38 @@
   flex-grow: 1;
   min-width: 0;
 }
+
+.heart {
+  background: transparent url(../images/heart.svg) center no-repeat;
+  width: 21px;
+  height: 18px;
+  margin-right: 20px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.heart_active {
+  background: transparent url(../images/like-active.svg);
+}
+
+.heart__image:hover {
+  opacity: 0.5;
+}
+
+.trash {
+  position: absolute;
+  padding: 0px;
+  margin: 18px 15px 244px 250px;
+  cursor: pointer;
+  background: transparent url(../images/trash.svg) center no-repeat;
+  border: none;
+}
+
+.trash__button:hover {
+  opacity: 60%;
+}
+
 @media screen and (max-width: 595px) {
   .cards {
     grid-template-columns: 1fr;

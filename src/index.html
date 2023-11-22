@@ -34,21 +34,21 @@
                 id="profile-edit-button"
                 type="button"
               >
-                <img
+                <!-- <img
                   src="<%=require('./images/edit-button.svg')%>"
                   alt="edit-button"
                   class="profile__edit-button-vector"
-                />
+                /> -->
               </button>
             </div>
             <p class="profile__subtitle" id="profile-subtitle">Explorer</p>
           </div>
           <button class="profile__button" id="profile__button" type="button">
-            <img
+            <!-- <img
               src="<%=require('./images/Plus-vector.svg')%>"
               alt="plus-emoji"
               class="profile__vector"
-            />
+            /> -->
           </button>
         </section>
         <section>
@@ -163,24 +163,14 @@
     </div>
     <template id="card-template">
       <li class="cards__card">
-        <button class="trash" type="button">
-          <img
-            class="trash__button"
-            id="trash-image"
-            src="<%=require('./images/trash.svg')%>"
-            alt="trash-icon"
-          />
+        <button class="trash" type="button" id="trash-image">
+          <!-- <img class="trash" id="trash-image" src="" alt="" /> -->
         </button>
         <img class="cards__image" id="card-image" src="" alt="" />
         <div class="cards__footer">
           <h2 class="cards__title" id="card-title"></h2>
-          <button class="heart" type="button">
-            <img
-              class="heart__image"
-              id="heart-image"
-              src="<%=require('./images/heart.svg')%>"
-              alt="heart-icon"
-            />
+          <button class="heart" type="button" id="heart-image">
+            <!-- <img class="heart" id="heart-image" src="" alt="" /> -->
           </button>
         </div>
       </li>
