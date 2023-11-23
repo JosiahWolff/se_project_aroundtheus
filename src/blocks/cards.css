@@ -64,6 +64,8 @@
   position: absolute;
   padding: 0px;
   margin: 18px 15px 244px 250px;
+  width: 18px;
+  height: 19.3px;
   cursor: pointer;
   background: transparent url(../images/trash.svg) center no-repeat;
   border: none;
