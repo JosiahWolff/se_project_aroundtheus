@@ -9,8 +9,6 @@ import "./index.css";
 import {
   initialCards,
   config,
-  profileEditModal,
-  addCardModal,
   addCardFormElement,
   profileTitle,
   profileSubtitle,
@@ -23,7 +21,6 @@ import {
   cardUrlInput,
   cardPreviewImage,
   cardCaption,
-  cardPreviewModal,
   profileEditButton,
   //profileEditCloseButton,
   addNewCardButton,
@@ -41,17 +38,17 @@ const addCardFormValidator = new FormValidator(
   document.querySelector("#add-card-form")
 );
 
-const newCardPopup = new PopupWithForm("#add-card-modal", handleAddCardSubmit);
-newCardPopup.setEventListeners();
+const addCardModal = new PopupWithForm("#add-card-modal", handleAddCardSubmit);
+addCardModal.setEventListeners();
 
-const imagePopup = new PopupWithImage("#cardPreviewModal");
-imagePopup.setEventListeners();
+const cardPreviewModal = new PopupWithImage("#cardPreviewModal");
+cardPreviewModal.setEventListeners();
 
-const editProfilePopup = new PopupWithForm(
+const profileEditModal = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
 );
-editProfilePopup.setEventListeners();
+profileEditModal.setEventListeners();
 
 const profileUserInfo = new UserInfo(
   ".profile__title",
@@ -112,9 +109,7 @@ profileEditButton.addEventListener("click", () => {
   profileEditModal.open();
 });
 
-//profileEditCloseButton.addEventListener("click", () =>
-//  closeModal(profileEditModal)
-//);
+//profileEditCloseButton.addEventListener("click", () => profileEditModal.close);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
@@ -123,13 +118,9 @@ addNewCardButton.addEventListener("click", () => {
   addCardModal.open();
 });
 
-//addCardModalCloseButton.addEventListener("click", () =>
-//  closeModal(addCardModal)
-//);
+//addCardModalCloseButton.addEventListener("click", () => addCardModal.close);
 
-//cardPreviewCloseButton.addEventListener("click", () =>
-//  closeModal(cardPreviewModal)
-//);
+//cardPreviewCloseButton.addEventListener("click", () => cardPreviewModal.close);
 
 //handlers
 

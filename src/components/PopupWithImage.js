@@ -6,9 +6,7 @@ export class PopupWithImage extends Popup {
     this._imageElement = this._popupElement.querySelector(
       ".modal__preview-image"
     );
-    this._titleElement = this._popupElement.querySelector(
-      ".modal__preview-title"
-    );
+    this._titleElement = this._popupElement.querySelector("#modal-caption");
   }
 
   open(imageUrl, imageAlt, title) {
