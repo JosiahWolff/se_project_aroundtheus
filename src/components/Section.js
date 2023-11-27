@@ -11,8 +11,7 @@ export default class Section {
     });
   }
 
-  addItem(data) {
-    const element = this._renderer(data);
-    //this._container.prepend(element);
+  addItem() {
+    this._container.prepend();
   }
 }

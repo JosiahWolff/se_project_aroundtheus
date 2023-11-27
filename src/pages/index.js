@@ -54,7 +54,7 @@ const profileUserInfo = new UserInfo(".profile__title", ".profile__subtitle");
 
 const cardSection = new Section(
   { items: initialCards, renderer: createCard },
-  ".cards__list"
+  ".cards"
 );
 
 //Event Listeners
