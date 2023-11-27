@@ -100,13 +100,6 @@ function handleProfileEditSubmit(inputValues) {
   profileUserInfo.setUserInfo(inputValues.title, inputValues.subtitle);
 }
 
-//objects
-
-initialCards.forEach((cardData) => {
-  const cardElement = createCard(cardData);
-  cardWrap.append(cardElement);
-});
-
 cardSection.renderItems();
 
 profileEditFormValidator.enableValidation();
