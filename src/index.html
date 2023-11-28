@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="autor" content="Josiah Wolff" />
-    <link rel="icon" href="./favicon.svg" />
+    <meta
+      name="keywords"
+      content="jacques, cousteau, explorer, usa, landscape"
+    />
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
     <title>Around the us</title>
   </head>
   <body class="page">
@@ -33,33 +37,27 @@
                 class="profile__edit-button"
                 id="profile-edit-button"
                 type="button"
-              >
-                <!-- <img
-                  src="<%=require('./images/edit-button.svg')%>"
-                  alt="edit-button"
-                  class="profile__edit-button-vector"
-                /> -->
-              </button>
+              ></button>
             </div>
             <p class="profile__subtitle" id="profile-subtitle">Explorer</p>
           </div>
-          <button class="profile__button" id="profile__button" type="button">
-            <!-- <img
-              src="<%=require('./images/Plus-vector.svg')%>"
-              alt="plus-emoji"
-              class="profile__vector"
-            /> -->
-          </button>
+          <button
+            class="profile__button"
+            id="profile__button"
+            type="button"
+          ></button>
         </section>
         <section>
           <ul class="cards" id="cards"></ul>
         </section>
       </main>
       <footer class="footer">
-        <p class="footer__title">© 2022 Around The U.S.</p>
+        <p class="footer__title">© 2023 Around The U.S.</p>
       </footer>
     </div>
+
     <!-- profile edit -->
+
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
@@ -99,7 +97,9 @@
         </form>
       </div>
     </div>
+
     <!-- Add card -->
+
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button
@@ -143,6 +143,9 @@
         </form>
       </div>
     </div>
+
+    <!-- Card Preview -->
+
     <div class="modal" id="cardPreviewModal">
       <div class="modal__preview">
         <button
@@ -159,17 +162,16 @@
         <p class="modal__caption" id="modal-caption"></p>
       </div>
     </div>
+
+    <!-- Card Template -->
+
     <template id="card-template">
       <li class="cards__card">
-        <button class="trash" type="button" id="trash-image">
-          <!-- <img class="trash" id="trash-image" src="" alt="" /> -->
-        </button>
+        <button class="trash" type="button" id="trash-image"></button>
         <img class="cards__image" id="card-image" src="" alt="" />
         <div class="cards__footer">
           <h2 class="cards__title" id="card-title"></h2>
-          <button class="heart" type="button" id="heart-image">
-            <!-- <img class="heart" id="heart-image" src="" alt="" /> -->
-          </button>
+          <button class="heart" type="button" id="heart-image"></button>
         </div>
       </li>
     </template>

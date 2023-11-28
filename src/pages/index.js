@@ -9,26 +9,14 @@ import "./index.css";
 import {
   initialCards,
   config,
-  addCardFormElement,
-  profileTitle,
-  profileSubtitle,
   profileTitleInput,
   profileSubtitleInput,
-  profileEditForm,
-  cardTemplate,
-  cardWrap,
-  cardTitleInput,
-  cardUrlInput,
-  cardPreviewImage,
-  cardCaption,
   profileEditButton,
-  //profileEditCloseButton,
   addNewCardButton,
-  //addCardModalCloseButton,
-  //cardPreviewCloseButton,
 } from "../utils/constant.js";
 
 // Variables
+
 const profileEditFormValidator = new FormValidator(
   config,
   document.querySelector("#modal-form")
