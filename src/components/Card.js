@@ -3,6 +3,8 @@ export default class Card {
     this._cardData = cardData;
     this._name = cardData.name;
     this._link = cardData.link;
+    this.id = cardData._id;
+    this.isLiked = cardData.isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._cardTemplate = document.querySelector(cardSelector).content;
@@ -14,8 +16,6 @@ export default class Card {
     this._likeButton = this._cardElement.querySelector("#heart-image");
     this._deleteButton = this._cardElement.querySelector("#trash-image");
   }
-
-  //private
 
   _setEventListeners() {
     //like-button
@@ -35,10 +35,26 @@ export default class Card {
     });
   }
 
-  //public
+  updateLikeStatus(isLiked) {
+    this.isLiked = isLiked;
+    this._renderLikes();
+  }
+
+  _renderLikes() {
+    if (this.isLiked) {
+      this._likeButton.classList.add("card__like-button_active");
+    } else {
+      this._likeButton.classList.remove("card__like-button_active");
+    }
+  }
+
+  getId() {
+    return this.id;
+  }
 
   getCardElement() {
     this._setEventListeners();
+    this._renderLikes();
     this._cardImageEl.src = this._link;
     this._cardImageEl.alt = this._name;
     this._cardTitleEl.textContent = this._name;

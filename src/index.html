@@ -23,11 +23,18 @@
       </header>
       <main>
         <section class="profile">
-          <img
-            class="profile__image"
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="photo-of-the-user"
-          />
+          <div class="profile_avatar-container">
+            <img
+              class="profile__image"
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="photo-of-the-user"
+            />
+            <button
+              class="avatar__edit-button"
+              id="avatar-edit-button"
+              type="button"
+            ></button>
+          </div>
           <div class="profile__description">
             <div class="profile__caption">
               <h1 class="profile__title" id="profile-title">
@@ -98,6 +105,33 @@
       </div>
     </div>
 
+    <!-- Edit Avatar -->
+
+    <div class="modal" id="avatar-image-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="add-avatar-close-button"
+          type="button"
+        ></button>
+        <h3 class="modal__heading">Change profile picture</h3>
+        <form class="modal__form" name="edit-avatar-form">
+          <input
+            class="modal__input modal__input-avatar"
+            id="avatar-input"
+            name="avatar"
+            type="URL"
+            placeholder="Image URL"
+            required
+          />
+          <span class="modal__error" id="avatar-input-error"></span>
+          <button class="modal__button modal__button_disabled" type="submit">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- Add card -->
 
     <div class="modal" id="add-card-modal">
@@ -141,6 +175,22 @@
             </button>
           </fieldset>
         </form>
+      </div>
+    </div>
+
+    <!-- Delete Card-->
+
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container">
+        <form class="modal__form" name="confirm-delete-form">
+          <h5 class="modal__heading">Are you sure?</h5>
+          <button class="modal__button" type="submit">Yes</button>
+        </form>
+        <button
+          class="modal__close"
+          id="delete-card-close-button"
+          type="button"
+        ></button>
       </div>
     </div>
 
