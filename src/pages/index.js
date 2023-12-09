@@ -71,6 +71,11 @@ const newUserInfo = new UserInfo(
   ".profile__image"
 );
 
+//cardSection.renderItems();
+
+profileEditFormValidator.enableValidation();
+addCardFormValidator.enableValidation();
+
 //Create & Render Card
 
 function createCard(cardData) {
@@ -109,7 +114,6 @@ function handleAddCardSubmit(inputValues) {
 }
 
 addNewCardButton.addEventListener("click", () => {
-  formValidators["edit-profile-form"].resetValidation();
   addCardModal.open();
 });
 
@@ -170,7 +174,6 @@ function handleAvatarFormSubmit(data) {
 }
 
 editAvatarOpenButton.addEventListener("click", () => {
-  formValidators["edit-avatar-form"].resetValidation();
   updateAvatarForm.open();
 });
 
@@ -235,15 +238,10 @@ const formValidators = {};
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
-    const validator = new FormValidator(config, formElement);
+    const validator = new FormValidator(config, form);
     const formName = formElement.getAttribute("name");
     formValidators[formName] = validator;
     validator.enableValidation();
   });
 };
 enableValidation(config);
-
-cardSection.renderItems();
-
-profileEditFormValidator.enableValidation();
-addCardFormValidator.enableValidation();
