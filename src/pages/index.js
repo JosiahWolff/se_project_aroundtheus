@@ -31,7 +31,25 @@ const addCardFormValidator = new FormValidator(
 
 const profileUserInfo = new UserInfo(".profile__title", ".profile__subtitle");
 
-// Api User Info
+//Create & Render Card
+
+function createCard(cardData) {
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleLikeClick,
+    handleDeleteClick,
+    handlePreviewImage
+  );
+  return card.getCardElement();
+}
+
+function renderCard(cardData) {
+  const element = createCard(cardData);
+  cardSection.addItem(element);
+}
+
+// Api User Info/Initial Cards
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -76,24 +94,6 @@ const newUserInfo = new UserInfo(
 profileEditFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
 
-//Create & Render Card
-
-function createCard(cardData) {
-  const card = new Card(
-    cardData,
-    "#card-template",
-    handleLikeClick,
-    handleDeleteClick,
-    handlePreviewImage
-  );
-  return card.getCardElement();
-}
-
-function renderCard(cardData) {
-  const element = createCard(cardData);
-  cardSection.addItem(element);
-}
-
 //Add Card
 
 const addCardModal = new PopupWithForm("#add-card-modal", handleAddCardSubmit);
@@ -128,7 +128,7 @@ profileEditModal.setEventListeners();
 function handleProfileEditSubmit(inputValues) {
   profileEditModal.setLoading(true);
   api
-    .updateUserInfo(inputValues.name, inputValues.about)
+    .updateUserInfo(inputValues.title, inputValues.subtitle)
     .then((res) => {
       newUserInfo.setUserInfo(res);
       profileEditModal.close();
@@ -238,7 +238,7 @@ const formValidators = {};
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
-    const validator = new FormValidator(config, form);
+    const validator = new FormValidator(config, formElement);
     const formName = formElement.getAttribute("name");
     formValidators[formName] = validator;
     validator.enableValidation();

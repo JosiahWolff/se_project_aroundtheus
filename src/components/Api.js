@@ -18,13 +18,13 @@ export default class Api {
     }).then((res) => this._checkResponse(res));
   }
 
-  updateUserInfo(name, about) {
+  updateUserInfo(title, subtitle) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        about: about,
+        name: title,
+        about: subtitle,
       }),
     }).then((res) => this._checkResponse(res));
   }
