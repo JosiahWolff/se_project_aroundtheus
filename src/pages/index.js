@@ -37,16 +37,17 @@ function createCard(cardData) {
   const card = new Card(
     cardData,
     "#card-template",
-    handleLikeClick,
-    handleDeleteClick,
+    //handleLikeClick,
+    //handleDeleteClick,
     handlePreviewImage
   );
   return card.getCardElement();
 }
 
 function renderCard(cardData) {
-  const element = createCard(cardData);
-  cardSection.addItem(element);
+  return createCard(cardData);
+  //const element = createCard(cardData);
+  //cardSection.addItem(element);
 }
 
 // Api User Info/Initial Cards
@@ -54,7 +55,7 @@ function renderCard(cardData) {
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "19e430c0-f62e-4d06-aac6-71158f0c4154",
+    authorization: "0f915c02-d173-4ea0-aefb-dc32641e7138",
     "Content-Type": "application/json",
   },
 });
@@ -89,7 +90,7 @@ const newUserInfo = new UserInfo(
   ".profile__image"
 );
 
-//cardSection.renderItems();
+//
 
 profileEditFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
@@ -99,10 +100,10 @@ addCardFormValidator.enableValidation();
 const addCardModal = new PopupWithForm("#add-card-modal", handleAddCardSubmit);
 addCardModal.setEventListeners();
 
-function handleAddCardSubmit(inputValues) {
+function handleAddCardSubmit(data) {
   addCardModal.setLoading(true);
   api
-    .addCard(inputValues)
+    .addCard(data)
     .then((res) => {
       renderCard(res);
       addCardModal.close();
@@ -125,10 +126,10 @@ const profileEditModal = new PopupWithForm(
 );
 profileEditModal.setEventListeners();
 
-function handleProfileEditSubmit(inputValues) {
+function handleProfileEditSubmit(data) {
   profileEditModal.setLoading(true);
   api
-    .updateUserInfo(inputValues.title, inputValues.subtitle)
+    .updateUserInfo(data.title, data.subtitle)
     .then((res) => {
       newUserInfo.setUserInfo(res);
       profileEditModal.close();
