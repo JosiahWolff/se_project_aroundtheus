@@ -8,8 +8,6 @@ export default class Card {
 
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
-
-    this._cardTemplate = document.querySelector(cardSelector).content;
   }
 
   _getTemplate() {

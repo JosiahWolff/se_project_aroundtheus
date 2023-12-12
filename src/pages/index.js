@@ -33,14 +33,8 @@ const profileUserInfo = new UserInfo(".profile__title", ".profile__subtitle");
 
 //Create & Render Card
 
-function createCard(cardData) {
-  const card = new Card(
-    cardData,
-    "#card-template",
-    //handleLikeClick,
-    //handleDeleteClick,
-    handlePreviewImage
-  );
+function createCard(data) {
+  const card = new Card(data, "#card-template", handlePreviewImage);
   return card.getView();
 }
 
