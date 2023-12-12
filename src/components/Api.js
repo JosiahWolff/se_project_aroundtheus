@@ -51,8 +51,8 @@ export default class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: card.title,
-        link: card.url,
+        name: card.name,
+        link: card.link,
       }),
     }).then((res) => this._checkResponse(res));
   }

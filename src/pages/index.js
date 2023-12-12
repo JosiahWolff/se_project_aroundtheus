@@ -41,13 +41,7 @@ function createCard(cardData) {
     //handleDeleteClick,
     handlePreviewImage
   );
-  return card.getCardElement();
-}
-
-function renderCard(cardData) {
-  return createCard(cardData);
-  //const element = createCard(cardData);
-  //cardSection.addItem(element);
+  return card.getView();
 }
 
 // Api User Info/Initial Cards
@@ -72,9 +66,11 @@ api
     cardSection = new Section(
       {
         items: cards,
-        renderer: renderCard,
+        renderer: (cardData) => {
+          cardSection.addItem(createCard(cardData));
+        },
       },
-      ".cards__list"
+      ".cards"
     );
     cardSection.renderItems();
   })
@@ -105,7 +101,7 @@ function handleAddCardSubmit(data) {
   api
     .addCard(data)
     .then((res) => {
-      renderCard(res);
+      cardSection.addItem(createCard(res));
       addCardModal.close();
     })
     .catch((err) => {
