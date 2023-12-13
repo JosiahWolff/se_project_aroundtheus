@@ -34,7 +34,15 @@ const profileUserInfo = new UserInfo(".profile__title", ".profile__subtitle");
 //Create & Render Card
 
 function createCard(data) {
-  const card = new Card(data, "#card-template", handlePreviewImage);
+  const card = new Card(
+    data,
+    "#card-template",
+    handleLikeClick,
+    handleDeleteClick,
+    (link, name) => {
+      cardPreviewModal.open(link, name);
+    }
+  );
   return card.getView();
 }
 
@@ -173,9 +181,9 @@ editAvatarOpenButton.addEventListener("click", () => {
 const cardPreviewModal = new PopupWithImage("#cardPreviewModal");
 cardPreviewModal.setEventListeners();
 
-function handlePreviewImage(cardData) {
-  cardPreviewModal.open(cardData.link, cardData.name, cardData.name);
-}
+//function handlePreviewImage(cardData) {
+//cardPreviewModal.open(cardData.link, cardData.name, cardData.name);
+//}
 
 //Card Like
 
