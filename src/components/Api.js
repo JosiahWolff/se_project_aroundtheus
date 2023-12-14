@@ -1,3 +1,6 @@
+import { initialCards } from "../utils/constant.js";
+//import Popup from "./Popup.js";
+
 export default class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -79,6 +82,6 @@ export default class Api {
   }
 
   loadPageContent() {
-    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+    return Promise.all([Promise.resolve(initialCards), this.getUserInfo()]);
   }
 }
