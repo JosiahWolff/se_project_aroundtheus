@@ -90,8 +90,8 @@ const newUserInfo = new UserInfo(
 
 //
 
-profileEditFormValidator.enableValidation();
-addCardFormValidator.enableValidation();
+//profileEditFormValidator.enableValidation();
+//addCardFormValidator.enableValidation();
 
 //Add Card
 
@@ -100,8 +100,16 @@ addCardModal.setEventListeners();
 
 function handleAddCardSubmit(data) {
   addCardModal.setLoading(true);
+
+  const correctedData = {
+    name: data.title,
+    link: data.url,
+  };
+
+  console.log("Data before adding card:", data);
+
   api
-    .addCard(data)
+    .addCard(correctedData)
     .then((res) => {
       cardSection.addItem(createCard(res));
       addCardModal.close();
@@ -113,6 +121,7 @@ function handleAddCardSubmit(data) {
 }
 
 addNewCardButton.addEventListener("click", () => {
+  addCardFormValidator.resetValidation();
   addCardModal.open();
 });
 
@@ -139,9 +148,9 @@ function handleProfileEditSubmit(data) {
 }
 
 profileEditButton.addEventListener("click", () => {
-  const { name, job } = profileUserInfo.getUserInfo();
-  profileTitleInput.value = name;
-  profileSubtitleInput.value = job;
+  const data = newUserInfo.getUserInfo();
+  profileTitleInput.value = data.name;
+  profileSubtitleInput.value = data.description;
 
   profileEditFormValidator.resetValidation();
 
@@ -173,6 +182,7 @@ function handleAvatarFormSubmit(data) {
 }
 
 editAvatarOpenButton.addEventListener("click", () => {
+  formValidators["edit-avatar-form"].resetValidation();
   updateAvatarForm.open();
 });
 
@@ -180,10 +190,6 @@ editAvatarOpenButton.addEventListener("click", () => {
 
 const cardPreviewModal = new PopupWithImage("#cardPreviewModal");
 cardPreviewModal.setEventListeners();
-
-//function handlePreviewImage(cardData) {
-//cardPreviewModal.open(cardData.link, cardData.name, cardData.name);
-//}
 
 //Card Like
 
@@ -229,6 +235,7 @@ function handleDeleteClick(card) {
         confirmDelete.setLoading(false, "Yes");
       });
   });
+  confirmDelete.open();
 }
 
 //Form Validator
