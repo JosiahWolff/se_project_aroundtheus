@@ -10,4 +10,4 @@ This project contains html, css, javascript, api, and figma. This proejct displa
 
 **Link to Website**
 
-https://josiah3311.github.io/se_project_aroundtheus/
+https://JosiahWolff.github.io/se_project_aroundtheus/
