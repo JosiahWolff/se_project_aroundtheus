@@ -82,6 +82,6 @@ export default class Api {
   }
 
   loadPageContent() {
-    return Promise.all([Promise.resolve(initialCards), this.getUserInfo()]);
+    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 }

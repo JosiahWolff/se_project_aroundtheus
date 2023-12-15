@@ -34,9 +34,8 @@ const profileUserInfo = new UserInfo(".profile__title", ".profile__subtitle");
 //Create & Render Card
 
 function createCard(data) {
-  const cardData = data._id ? data : { name: data.name, link: data.link };
   const card = new Card(
-    cardData,
+    data,
     "#card-template",
     handleLikeClick,
     handleDeleteClick,
@@ -89,7 +88,7 @@ const newUserInfo = new UserInfo(
   ".profile__image"
 );
 
-//Add Card
+// Add Card
 
 const addCardModal = new PopupWithForm("#add-card-modal", handleAddCardSubmit);
 addCardModal.setEventListeners();
