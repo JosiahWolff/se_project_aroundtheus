@@ -61,6 +61,9 @@ export const addCardModalCloseButton =
 export const cardPreviewCloseButton = cardPreviewModal.querySelector(
   "#card-preview-close-button"
 );
+export const editAvatarOpenButton = document.querySelector(
+  "#avatar-edit-button"
+);
 export const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",

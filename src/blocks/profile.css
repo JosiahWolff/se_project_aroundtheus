@@ -5,12 +5,40 @@
   margin-top: 36.25px;
   margin-bottom: 47.25px;
 }
+
+.profile_avatar-container {
+  position: relative;
+}
+
+.profile_avatar-container:hover {
+  opacity: 60%;
+}
+
 .profile__image {
   width: 120px;
   height: 120px;
   margin-right: 30px;
   border-radius: 50%;
 }
+
+.avatar__edit-button {
+  position: absolute;
+  top: 47px;
+  left: 47px;
+  background: transparent url(../images/edit-button.svg) center no-repeat;
+  width: 26px;
+  height: 26px;
+  background-size: contain;
+  border: none;
+  transition: 0.3s ease-in;
+  opacity: 0;
+}
+
+.avatar__edit-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
 .profile__description {
   display: flex;
   flex-direction: column;

@@ -58,6 +58,19 @@
   padding: 34px 64px 28px 36px;
   margin: 0;
 }
+
+.modal__heading {
+  margin: 34px 64px 50px 36px;
+  color: #000000;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  display: inline-block;
+  height: 23px;
+}
+
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -89,6 +102,48 @@
   display: flex;
   box-sizing: border-box;
   position: relative;
+}
+
+.modal__input-avatar {
+  margin: 0px 36px 13px 40px;
+  padding: 0px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.modal__input-avatar::placeholder {
+  color: #c4c4c4;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.modal__input-new {
+  margin: 0px 0px 5px 0px;
+  padding: 0px 0px 13px 0px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.modal__input-new::placeholder {
+  color: #c4c4c4;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .modal__input_type_error {
