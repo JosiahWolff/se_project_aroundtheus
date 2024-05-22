@@ -12,6 +12,11 @@ This project displays a user, and their customizable cards, allowing them to bui
   - api
   - figma
 
+## Preview
+
+![image](https://github.com/JosiahWolff/se_project_aroundtheus/assets/134183204/7c6521db-1c28-428e-8d83-47b94c57ef88)
+
+
 ## Links
 
 [Active Site](https://JosiahWolff.github.io/se_project_aroundtheus/)
