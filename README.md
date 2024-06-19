@@ -19,8 +19,8 @@ This project displays a user, and their customizable cards, allowing them to bui
 
 ## Links
 
-[Active Site](https://JosiahWolff.github.io/se_project_aroundtheus/)
+-[Active Site](https://JosiahWolff.github.io/se_project_aroundtheus/)
 
-[Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+-[Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
 
-[Demo](https://www.loom.com/share/507395519d0946ad95d2dfc34e94845d?sid=39999cd7-5114-4f81-99d8-7e737e4ebad6)
+-[Demo](https://www.loom.com/share/507395519d0946ad95d2dfc34e94845d?sid=39999cd7-5114-4f81-99d8-7e737e4ebad6)
